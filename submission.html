@@ -13,7 +13,7 @@
         table,
         th {
             border: 1px solid black;
-
+            border-collapse: collapse;
         }
 
         td {
@@ -24,7 +24,7 @@
         /*
             This script segment is intended to simulate a form
             getting data from a form post on the referring page.
-            We are only doing this for now until we go over a 
+            We are only doing this for now until we go over a
             web server implementation that contains a server side
             presence.
         */
@@ -42,7 +42,7 @@
         };
 
         //Function retrieves the requested GET parameter value from
-        //the query string. Input is the field name for the 
+        //the query string. Input is the field name for the
         //field-value pair in the query string,
         //e.g., field=value -> first=bob
         function GetURLParameterValue(searchParameter) {
@@ -55,6 +55,20 @@
                 }
             }
         };
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const myCheckbox = document.getElementById('chkOne');
+        const myDiv = document.getElementById('myDiv');
+
+        myCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                myDiv.style.display = 'block'; // Show the div
+            } else {
+                myDiv.style.display = 'none'; // Hide the div
+            }
+        });
+    });
+
     </script>
 
 </head>
@@ -72,6 +86,14 @@
             <td id="lname"></td>
         </tr>
     </table>
+
+    <p>
+        <label for="chkOne">Display Image:</label>
+        <input type="checkbox" name="chkOne" id="chkOne">
+    </p>
+
+    <div id="myDiv"> <img src="../test/vessel.webp" alt="vessel" width="300"> </div>
+
 </body>
 
 </html>
